@@ -49,3 +49,15 @@ For NMOS ```sky130_fd_pr__nfet_01v8 W=.42 L=.5```
 - Press Enter. If there is no error in the file, the spice will show graphs for simulation, or else it will show output with the respective error in the spice window.
 
 - These are the complete steps to create a circuit with ESim and simulating with Skywater130 and Ngspice.
+
+## Ngspice and Sky130 outputs
+The outputs of Transmission Gate simulated from Spice netlist with [Sky130](https://github.com/google/skywater-pdk) library are as below:
+
+<img src="https://github.com/PatelVatsalB21/Transmission_Gate_130nm/blob/main/Docs/Spice%20Simulation.png"/>
+
+
+## Verilog Implementation
+
+The following Transmission gate has also been implemented in verilog code and compiled with the help of [IVerilog](https://github.com/steveicarus/iverilog). The output of the verilog implementation has been plotted with GTKWave. Following is the output of Transimission gate for 20 nanoseconds:
+
+<img src="https://github.com/PatelVatsalB21/Transmission_Gate_130nm/blob/main/Verilog/GTKWave.png"/>
