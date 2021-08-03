@@ -1,0 +1,26 @@
+* c:\users\vatsal\esim-workspace\cmos_transmission_gate\cmos_transmission_gate.cir
+
+.include PMOS-5um.lib
+.include NMOS-5um.lib
+m1 in -control out in mos_p W=100u L=100u M=1
+m2 out control in in mos_n W=42 L=50 M=1
+v2  -control gnd pulse(5 0 0 0 0 10m 20m)
+v1  in gnd pulse(0 5 0 0 0 5m 10m)
+v3  control gnd pulse(0 5 0 0 0 10m 20m)
+* u1  in plot_v1
+* u2  -control plot_v1
+* u3  control plot_v1
+* u4  out plot_v1
+.tran 0.1e-03 2000e-03 0e-03
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+plot v(in)
+plot v(-control)
+plot v(control)
+plot v(out)
+.endc
+.end
