@@ -1,0 +1,75 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000000000013e900 .scope module, "tb_tx_gate" "tb_tx_gate" 2 2;
+ .timescale -9 -9;
+v000000000013ce90_0 .var "in", 0 0;
+L_00000000005aa7a0 .functor BUFT 1, C8<550>, C4<0>, C4<0>, C4<0>;
+RS_00000000005af128 .resolv tri, L_00000000001370a0, L_000000000013cfd0, L_00000000005aa7a0;
+v000000000013cf30_0 .net8 "out", 0 0, RS_00000000005af128;  3 drivers, strength-aware
+v00000000005f7810_0 .var "sel", 0 0;
+S_000000000013ea90 .scope module, "uut" "tx_gate" 2 6, 3 2 0, S_000000000013e900;
+ .timescale -9 -9;
+    .port_info 0 /OUTPUT 1 "out";
+    .port_info 1 /INPUT 1 "sel";
+    .port_info 2 /INPUT 1 "in";
+RS_00000000005af068 .resolv tri, L_00000000005f97e0, L_00000000005aa730;
+L_00000000001370a0 .functor PMOS 1, v000000000013ce90_0, RS_00000000005af068, C4<0>, C4<0>;
+L_000000000013cfd0 .functor NMOS 1, v000000000013ce90_0, v00000000005f7810_0, C4<0>, C4<0>;
+v000000000013c780_0 .net "in", 0 0, v000000000013ce90_0;  1 drivers
+v000000000013c820_0 .net8 "out", 0 0, RS_00000000005af128;  alias, 3 drivers, strength-aware
+v000000000013cd50_0 .net "sel", 0 0, v00000000005f7810_0;  1 drivers
+v000000000013cdf0_0 .net8 "sel_bar", 0 0, RS_00000000005af068;  2 drivers, strength-aware
+S_000000000013cbc0 .scope module, "inv" "cmos_inverter" 3 9, 4 1 0, S_000000000013ea90;
+ .timescale -9 -9;
+    .port_info 0 /OUTPUT 1 "inv_out";
+    .port_info 1 /INPUT 1 "inv_in";
+L_000000000013c8c0 .functor BUFT 1, C8<771>, C4<0>, C4<0>, C4<0>;
+L_00000000005f97e0 .functor PMOS 1, L_000000000013c8c0, v00000000005f7810_0, C4<0>, C4<0>;
+L_0000000000136d00 .functor BUFT 1, C8<770>, C4<0>, C4<0>, C4<0>;
+L_00000000005aa730 .functor NMOS 1, L_0000000000136d00, v00000000005f7810_0, C4<0>, C4<0>;
+v000000000013ec20_0 .net8 "GND", 0 0, L_0000000000136d00;  1 drivers, strength-aware
+v0000000000136f00_0 .net8 "PWR", 0 0, L_000000000013c8c0;  1 drivers, strength-aware
+v0000000000136c60_0 .net "inv_in", 0 0, v00000000005f7810_0;  alias, 1 drivers
+v000000000013c6e0_0 .net8 "inv_out", 0 0, RS_00000000005af068;  alias, 2 drivers, strength-aware
+    .scope S_000000000013e900;
+T_0 ;
+    %vpi_call 2 13 "$dumpfile", "tb_tx_gate.vcd" {0 0 0};
+    %vpi_call 2 14 "$dumpvars", 32'sb00000000000000000000000000000000, S_000000000013e900 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000013ce90_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000005f7810_0, 0, 1;
+    %delay 20, 0;
+    %vpi_call 2 17 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_000000000013e900;
+T_1 ;
+    %delay 2, 0;
+    %load/vec4 v00000000005f7810_0;
+    %inv;
+    %store/vec4 v00000000005f7810_0, 0, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_000000000013e900;
+T_2 ;
+    %delay 1, 0;
+    %load/vec4 v000000000013ce90_0;
+    %inv;
+    %store/vec4 v000000000013ce90_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "tb_tx_gate.v";
+    "tx_gate.v";
+    "./cmos_inverter.v";
