@@ -2,12 +2,23 @@
 Transmission Gate designed with Skywater 130nm, Ngspice and Esim
 
 ## Transmission Gate
+
+### Circuit Diagram
+<img src="https://github.com/PatelVatsalB21/Transmission_Gate_130nm/blob/main/Docs/Transmission_Gate.png"/>
+
 The Transmission Gate, (TG) is a bilateral switch where either of its terminals can be the input or the output, and the third connection called the Control, which determines
 the switching state of the gate as an open or closed switch. The combination of an NMOS and a PMOS transistor together within a single gate means that the NMOS transistor will transfer a good logic “0” but a poor logic “1”, while the PMOS transistor transfers a good logic “1” but a poor logic “0”. Therefore, connecting an NMOS transistor with a PMOS transistor in parallel provides a single bilateral switch which offers efficient output drive capability for CMOS logic gates controlled by a single input logic level.
 
 ## Working
 The Transmission Gate, (TG) is a bilateral switch where either of its terminals can be the input or the output. Along with the input and output terminals, the transmission gate
 has a third connection called the Control, which determines the switching state of the gate as an open or closed (NO/NC) switch. The combination of an NMOS and a PMOS transistor together within a single gate means that the NMOS transistor will transfer a good logic “0” but a poor logic “1”, while the PMOS transistor transfers a good logic “1” but a poor logic “0”. Therefore, connecting an NMOS transistor with a PMOS transistor in parallel provides a single bilateral switch which offers efficient output drive capability for CMOS logic gates controlled by a single input logic level. Working of Transmission Gate When the voltage on the Control node is a logic 1, allowing both transistors to conduct and pass the signal at A to B. When the voltage on node Control is a logic 0, turning both transistors off and forcing a high-impedance condition. Thus the transmission gate acts as a “closed” switch when V(Control) = 1, while the gate acts as an “open” switch when V(Control) = 0 operating as a voltage-controlled switch. Boolean Expression B = A.Control We can see that the output at B relies not only on the logic level of input A but also on the logic level present on the control input. Thus the logic level value of B is defined as both A AND Control.
+
+### Schematic Diagram
+<img src="https://github.com/PatelVatsalB21/Transmission_Gate_130nm/blob/main/Docs/CMOS.jpg"/>
+
+### Ideal Output
+<img src="https://github.com/PatelVatsalB21/Transmission_Gate_130nm/blob/main/Docs/Transmission_Gate_Waveform.png"/>
+
 
 ## Creating Transmission Gate circuit with ESim and simulation it with Spice and Skywater130
 
