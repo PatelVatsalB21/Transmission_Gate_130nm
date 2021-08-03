@@ -1,0 +1,24 @@
+* C:\Users\Vatsal\eSim-Workspace\CMOS_Transmission_Gate\CMOS_Transmission_Gate.cir
+
+
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+
+* Sheet Name: /
+xM1  IN -CONTROL OUT IN sky130_fd_pr__pfet_01v8 W=.5 L=.5
+xM2  OUT CONTROL IN IN sky130_fd_pr__nfet_01v8 W=.42 L=.5	
+
+v2  -CONTROL GND 0 pulse(1.8 0 0s 0s 0s 10us 20us)		
+v1  IN GND 0 pulse(0 1.8 0s 0s 0s 5us 10us)
+v3  CONTROL GND 0 pulse(0 1.8 0s 0s 0s 10us 20us)
+
+.tran 0.1us 40us
+
+.control
+run
+
+plot V("out") V("in") V("control") V("-control")
+
+.endc
+
+.end
